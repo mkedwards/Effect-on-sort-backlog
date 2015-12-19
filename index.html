@@ -20,23 +20,14 @@ body {
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js"></script>
 <script src="http://raw.githubusercontent.com/eligrey/FileSaver.js/master/FileSaver.min.js"></script>
-<!-- canvg -->
-<script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script> 
-<script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
-<script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 </head>
 
 <body>
-<h1>Diverging Stacked Bar Chart</h1>
+<h1>Effect on sort backlog</h1>
 
 <p><a href="#" onclick="javascript:saveSVG()">Save SVG</a></p>
-<p><a href="#" onclick="javascript:savePNG()">Save PNG</a></p>
 
 <div id="figure" style="margin-bottom: 50px;"></div>
-
-<div>
-<canvas id="mycanvas" width="800px" height="600px"></canvas>
-</div>
 
 <script>
 
@@ -46,14 +37,6 @@ function saveSVG()
     var svgAsString = new XMLSerializer().serializeToString(element);
     var svgBlob = new Blob([svgAsString], {type: "image/svg+xml;charset=utf-8"});
     saveAs(svgBlob, "figure.svg");
-}
-
-function savePNG()
-{
-    var canvas = document.getElementById("mycanvas"), ctx = canvas.getContext("2d");
-    canvas.toBlob(function(blob) {
-    saveAs(blob, "figure.png");
-    });
 }
 
 var margin = {top: 50, right: 20, bottom: 10, left: 65},
@@ -193,11 +176,6 @@ var svg = d3.select("#figure").append("svg")
 
   var movesize = width/2 - startp.node().getBBox().width/2;
   d3.selectAll(".legendbox").attr("transform", "translate(" + movesize  + ",0)");
-
-  // print the svg in a canvas
-  var element = document.getElementById('d3-plot');
-  var svgAsString = new XMLSerializer().serializeToString(element);
-  canvg(document.getElementById('mycanvas'), svgAsString );
 });
 </script>
 
