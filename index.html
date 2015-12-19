@@ -50,7 +50,7 @@ var x = d3.scale.linear()
     .rangeRound([0, width]);
 
 var color = d3.scale.ordinal()
-    .range(["#222288", "#3333cc", "#cccccc", "#cc3333", "#882222"]);
+    .range(["#228822", "#33cc33", "#cccccc", "#cc3333", "#882222"]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -67,7 +67,7 @@ var svg = d3.select("#figure").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  color.domain(["Delete unsorted folder", "Sort success", "Sort failure", "Split", "Append to sorted folder"]);
+  color.domain(["Delete unsorted folder", "Sort success", "Sort failure", "Split folder", "Append to sorted folder"]);
 
   d3.csv("raw_data.csv", function(error, data) {
 
@@ -75,7 +75,7 @@ var svg = d3.select("#figure").append("svg")
     d["Delete unsorted folder"] = +d[1];
     d["Sort success"] = +d[2];
     d["Sort failure"] = +d[3];
-    d["Split"] = +d[4];
+    d["Split folder"] = +d[4];
     d["Append to sorted folder"] = +d[5];
     var x0 = -1*(d["Sort failure"]/2+d["Sort success"]+d["Delete unsorted folder"]);
     var idx = 0;
@@ -143,7 +143,7 @@ var svg = d3.select("#figure").append("svg")
 
   var startp = svg.append("g").attr("class", "legendbox").attr("id", "mylegendbox");
   // this is not nice, we should calculate the bounding box and use that
-  var legend_tabs = [0, 160, 240, 320, 400];
+  var legend_tabs = [0, 150, 250, 350, 450];
   var legend = startp.selectAll(".legend")
       .data(color.domain().slice())
     .enter().append("g")
