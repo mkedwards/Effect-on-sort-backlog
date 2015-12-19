@@ -72,11 +72,11 @@ var svg = d3.select("#figure").append("svg")
   d3.csv("raw_data.csv", function(error, data) {
 
   data.forEach(function(d) {
-    d["Delete unsorted folder"] = +d[1];
-    d["Sort success"] = +d[2];
-    d["Sort failure"] = +d[3];
-    d["Split folder"] = +d[4];
-    d["Append to sorted folder"] = +d[5];
+    d["Delete unsorted folder"] = 0;
+    d["Sort success"] = +d["Sort success"];
+    d["Sort failure"] = +d["Sort failure"];
+    d["Split folder"] = +d["Split folder"];
+    d["Append to sorted folder"] = +d["Append to sorted folder"];
     var x0 = -1*(d["Sort failure"]/2+d["Sort success"]+d["Delete unsorted folder"]);
     var idx = 0;
     d.boxes = color.domain().map(function(name) { return {name: name, x0: x0, x1: x0 += +d[name], N: +d.N, n: +d[idx += 1]}; });
