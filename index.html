@@ -91,7 +91,7 @@ var svg = d3.select("#figure").append("svg")
           });
 
   x.domain([min_val, max_val]).nice();
-  y.domain(data.map(function(d) { return d.Question; }));
+  y.domain(data.map(function(d) { return d.hostname; }));
 
   svg.append("g")
       .attr("class", "x axis")
@@ -105,7 +105,7 @@ var svg = d3.select("#figure").append("svg")
       .data(data)
     .enter().append("g")
       .attr("class", "bar")
-      .attr("transform", function(d) { return "translate(0," + y(d.Question) + ")"; });
+      .attr("transform", function(d) { return "translate(0," + y(d.hostname) + ")"; });
 
   var bars = vakken.selectAll("rect")
       .data(function(d) { return d.boxes; })
