@@ -41,7 +41,7 @@ function saveSVG()
 
 var margin = {top: 50, right: 20, bottom: 10, left: 65},
     width = 800 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+    height = 1200 - margin.top - margin.bottom;
 
 var y = d3.scale.ordinal()
     .rangeRoundBands([0, height], .3);
@@ -79,7 +79,7 @@ var svg = d3.select("#figure").append("svg")
     d["Append to sorted folder"] = +d["Append to sorted folder"];
     var x0 = -1*(d["Sort failure"]/2+d["Sort success"]+d["Delete unsorted folder"]);
     var idx = 0;
-    d.boxes = color.domain().map(function(name) { return {name: name, x0: x0, x1: x0 += +d[name], N: +d.N, n: +d[idx += 1]}; });
+    d.boxes = color.domain().map(function(name) { return {name: name, x0: x0, x1: x0 += +d[name], n: +d[name]}; });
   });
 
   var min_val = d3.min(data, function(d) {
